@@ -3,88 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prithvi's Birthday RSVP</title>
-    <!-- Tailwind CSS for a clean, responsive design -->
+    <title>Prithvi's Birthday Party RSVP</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        .party-bg {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.postimg.cc/KYVvbQVv/ICE-CREAM-SCOOP.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        .balloon-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        .ice-cream-cone {
+            position: absolute;
+            font-size: 24px;
+            animation: ice-cream-fall 4s linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes ice-cream-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .form-container {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
         }
     </style>
 </head>
-<body class="antialiased text-gray-800">
+<body class="party-bg">
+    <!-- Decorative confetti -->
+    <div class="confetti" style="left: 10%; animation-delay: 0s; background: #ff6b6b;"></div>
+    <div class="confetti" style="left: 20%; animation-delay: 0.5s; background: #4ecdc4;"></div>
+    <div class="confetti" style="left: 30%; animation-delay: 1s; background: #45b7d1;"></div>
+    <div class="confetti" style="left: 40%; animation-delay: 1.5s; background: #96ceb4;"></div>
+    <div class="confetti" style="left: 50%; animation-delay: 2s; background: #ffeaa7;"></div>
+    <div class="confetti" style="left: 60%; animation-delay: 2.5s; background: #fdcb6e;"></div>
+    <div class="confetti" style="left: 70%; animation-delay: 0.8s; background: #fdcb6e;"></div>
+    <div class="confetti" style="left: 80%; animation-delay: 1.3s; background: #e17055;"></div>
+    <div class="confetti" style="left: 90%; animation-delay: 1.8s; background: #a29bfe;"></div>
 
-    <!-- Main Container -->
-    <div class="min-h-screen flex items-center justify-center p-4">
-        <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg border border-gray-200">
-            <!-- Event Header -->
+    <!-- Falling ice cream cones -->
+    <div class="ice-cream-cone" style="left: 15%; animation-delay: 0s;">🍦</div>
+    <div class="ice-cream-cone" style="left: 35%; animation-delay: 1s;">🍨</div>
+    <div class="ice-cream-cone" style="left: 55%; animation-delay: 2s;">🍦</div>
+    <div class="ice-cream-cone" style="left: 75%; animation-delay: 0.7s;">🍧</div>
+    <div class="ice-cream-cone" style="left: 85%; animation-delay: 1.5s;">🍨</div>
+    <div class="ice-cream-cone" style="left: 5%; animation-delay: 2.2s;">🍦</div>
+    <div class="ice-cream-cone" style="left: 65%; animation-delay: 0.3s;">🍧</div>
+
+    <div class="min-h-screen py-8 px-4">
+        <div class="max-w-2xl mx-auto">
+            <!-- Header Section -->
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-gray-900 mb-2">Prithvi's Birthday Celebration! 🎉</h1>
-                <p class="text-gray-500">We are so excited to celebrate Prithvi's birthday and would be thrilled if you could join us. Please fill out the form below to confirm your attendance. We can't wait to celebrate this special day with you! ✨</p>
+                <div class="balloon-float inline-block text-6xl mb-4">🎈</div>
+                <h1 class="text-5xl font-bold text-white mb-4" style="font-family: 'Fredoka One', cursive; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                    🎉 Prithvi's Birthday Bash! 🎂
+                </h1>
+                <p class="text-xl text-white mb-2" style="font-family: 'Poppins', sans-serif; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+                    You're invited to celebrate with us!
+                </p>
+                <p class="text-lg text-white opacity-90" style="font-family: 'Poppins', sans-serif;">
+                    Please let us know if you can join the fun! 🎊
+                </p>
             </div>
 
             <!-- RSVP Form -->
-            <form id="rsvp-form" class="space-y-4">
-                <div>
-                    <label for="name1" class="block text-sm font-medium text-gray-700">Guest Full Name 1</label>
-                    <input type="text" id="name1" name="name1" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <div class="form-container rounded-3xl shadow-2xl p-8 border border-white/20">
+                <form id="rsvpForm" class="space-y-6">
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2" style="font-family: 'Poppins', sans-serif;">
+                            RSVP Details
+                        </h2>
+                        <p class="text-gray-600">We can't wait to celebrate with you!</p>
+                    </div>
+
+                    <!-- Guest Full Name 1 -->
+                    <div>
+                        <label for="guestName1" class="block text-sm font-medium text-gray-700 mb-2">
+                            Guest Full Name 1 *
+                        </label>
+                        <input type="text" id="guestName1" name="guestName1" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                               placeholder="Enter your full name">
+                    </div>
+
+                    <!-- Guest Full Name 2 -->
+                    <div>
+                        <label for="guestName2" class="block text-sm font-medium text-gray-700 mb-2">
+                            Guest Full Name 2 (if accompanying)
+                        </label>
+                        <input type="text" id="guestName2" name="guestName2"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                               placeholder="Enter accompanying guest's name (optional)">
+                    </div>
+
+                    <!-- Child's Name -->
+                    <div>
+                        <label for="childName" class="block text-sm font-medium text-gray-700 mb-2">
+                            Child's Name *
+                        </label>
+                        <input type="text" id="childName" name="childName" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                               placeholder="Enter your child's name">
+                    </div>
+
+                    <!-- Child's Age -->
+                    <div>
+                        <label for="childAge" class="block text-sm font-medium text-gray-700 mb-2">
+                            Child's Age *
+                        </label>
+                        <input type="number" id="childAge" name="childAge" required min="0" max="18"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                               placeholder="Enter your child's age">
+                    </div>
+
+                    <!-- Second Child Name -->
+                    <div>
+                        <label for="secondChildName" class="block text-sm font-medium text-gray-700 mb-2">
+                            If you are bringing a second child, please provide their name
+                        </label>
+                        <input type="text" id="secondChildName" name="secondChildName"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                               placeholder="Second child's name (optional)">
+                    </div>
+
+                    <!-- Second Child Age -->
+                    <div>
+                        <label for="secondChildAge" class="block text-sm font-medium text-gray-700 mb-2">
+                            If you are bringing a second child, please provide their age
+                        </label>
+                        <input type="number" id="secondChildAge" name="secondChildAge" min="0" max="18"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                               placeholder="Second child's age (optional)">
+                    </div>
+
+                    <!-- Caregiver Name -->
+                    <div>
+                        <label for="caregiverName" class="block text-sm font-medium text-gray-700 mb-2">
+                            Caregiver Name (if you are bringing one)
+                        </label>
+                        <input type="text" id="caregiverName" name="caregiverName"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                               placeholder="Caregiver's name (optional)">
+                    </div>
+
+                    <!-- Additional Comments -->
+                    <div>
+                        <label for="comments" class="block text-sm font-medium text-gray-700 mb-2">
+                            Additional Comments
+                        </label>
+                        <textarea id="comments" name="comments" rows="4"
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none"
+                                  placeholder="Any special requests, dietary restrictions, or messages for Prithvi?"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center pt-4">
+                        <button type="submit" 
+                                class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200">
+                            🎉 Submit RSVP 🎉
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Thank You Message (Hidden Initially) -->
+                <div id="thankYouMessage" class="hidden text-center py-8">
+                    <div class="text-6xl mb-4">🎊</div>
+                    <h2 class="text-3xl font-bold text-purple-600 mb-4" style="font-family: 'Fredoka One', cursive;">
+                        Thank You!
+                    </h2>
+                    <p class="text-lg text-gray-700 mb-2" id="personalizedMessage"></p>
+                    <p class="text-gray-600 mb-4">
+                        We're so excited to celebrate with you at Prithvi's birthday party! 🎂✨
+                    </p>
+                    
+                    <!-- Contact Info -->
+                    <div class="bg-pink-50 border-2 border-pink-200 rounded-2xl p-4 mb-6 mx-auto max-w-md">
+                        <div class="text-2xl mb-2">🍦💕</div>
+                        <h3 class="text-lg font-semibold text-pink-600 mb-2" style="font-family: 'Fredoka One', cursive;">
+                            Sweet Questions? Call Me! 
+                        </h3>
+                        <p class="text-gray-700 text-sm mb-1">Any issues or questions?</p>
+                        <p class="text-pink-600 font-semibold">Contact Shradha</p>
+                        <p class="text-lg font-bold text-pink-700">📞 7977874294</p>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button onclick="resetForm()" 
+                                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-200">
+                            Submit Another RSVP
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <label for="name2" class="block text-sm font-medium text-gray-700">Guest Full Name 2 (if accompanying)</label>
-                    <input type="text" id="name2" name="name2" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <!-- Success Notice -->
+            <div class="mt-6 text-center">
+                <div class="bg-green-100 border-2 border-green-300 rounded-2xl p-4 mb-4 mx-auto max-w-lg">
+                    <div class="text-2xl mb-2">✅</div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2">Connected to Google Sheets!</h3>
+                    <p class="text-green-700 text-sm">All RSVPs will automatically save to your spreadsheet.</p>
                 </div>
-                <div>
-                    <label for="child-name1" class="block text-sm font-medium text-gray-700">Child's Name</label>
-                    <input type="text" id="child-name1" name="child-name1" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                </div>
-                <div>
-                    <label for="child-age1" class="block text-sm font-medium text-gray-700">Child's Age</label>
-                    <input type="number" id="child-age1" name="child-age1" min="0" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                </div>
-                <div>
-                    <label for="child-name2" class="block text-sm font-medium text-gray-700">If you are bringing a second child, please provide their name</label>
-                    <input type="text" id="child-name2" name="child-name2" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                </div>
-                <div>
-                    <label for="child-age2" class="block text-sm font-medium text-gray-700">If you are bringing a second child, please provide their age</label>
-                    <input type="number" id="child-age2" name="child-age2" min="0" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                </div>
-                <div>
-                    <label for="caregiver-name" class="block text-sm font-medium text-gray-700">Caregiver Name (if you are bringing one)</label>
-                    <input type="text" id="caregiver-name" name="caregiver-name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                </div>
-                <div>
-                    <label for="comments" class="block text-sm font-medium text-gray-700">Additional Comments</label>
-                    <textarea id="comments" name="comments" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-                </div>
-                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:scale-105">
-                    Submit RSVP
-                </button>
-            </form>
-            <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Handle the form submission (this part would need a backend to work)
-        const rsvpForm = document.getElementById('rsvp-form');
-        const formMessage = document.getElementById('form-message');
-
-        rsvpForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            formMessage.classList.remove('hidden');
-            formMessage.classList.add('text-green-600');
-            formMessage.textContent = 'Thank you for your RSVP! Please note: this form requires a backend connection to save your details.';
-
-            // Log all form data to the console to see what would be sent to a backend
-            const formData = new FormData(rsvpForm);
-            const data = Object.fromEntries(formData.entries());
-            console.log('Form submission captured. A real application would send this data to a server:', data);
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const guestName1 = formData.get('guestName1');
+            const childName = formData.get('childName');
+            
+            // Create personalized thank you message
+            let message = `Dear ${guestName1},`;
+            if (childName) {
+                message += ` Thank you for RSVPing for ${childName}'s attendance!`;
+            } else {
+                message += ` Thank you for your RSVP!`;
+            }
+            
+            // Send data to Google Sheets
+            submitToGoogleSheets(formData, message);
         });
+        
+        async function submitToGoogleSheets(formData, message) {
+            // Google Apps Script Web App URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxS5-VN0nJ0FCMnHXQYGVCdd_f_u0myzBU89VY1oMOmKsia-94BZnI009L2MNdAUgeT/exec';
+            
+            try {
+                // Show loading state
+                const submitBtn = document.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '🍦 Sending RSVP...';
+                submitBtn.disabled = true;
+                
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    // Success - show thank you message
+                    document.getElementById('personalizedMessage').textContent = message;
+                    document.getElementById('rsvpForm').style.display = 'none';
+                    document.getElementById('thankYouMessage').classList.remove('hidden');
+                    createCelebration();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Oops! There was an issue submitting your RSVP. Please try again or contact Shradha at 7977874294.');
+                
+                // Reset button
+                const submitBtn = document.querySelector('button[type="submit"]');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+        
+        function resetForm() {
+            document.getElementById('rsvpForm').reset();
+            document.getElementById('rsvpForm').style.display = 'block';
+            document.getElementById('thankYouMessage').classList.add('hidden');
+        }
+        
+        function createCelebration() {
+            // Create temporary celebration confetti
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#fd79a8'][Math.floor(Math.random() * 6)];
+                    confetti.style.animationDelay = '0s';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+            
+            // Create temporary ice cream celebration
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const iceCream = document.createElement('div');
+                    iceCream.className = 'ice-cream-cone';
+                    iceCream.style.left = Math.random() * 100 + '%';
+                    iceCream.innerHTML = ['🍦', '🍨', '🍧'][Math.floor(Math.random() * 3)];
+                    iceCream.style.animationDelay = '0s';
+                    iceCream.style.fontSize = '30px';
+                    document.body.appendChild(iceCream);
+                    
+                    setTimeout(() => {
+                        iceCream.remove();
+                    }, 4000);
+                }, i * 150);
+            }
+        }
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9773d314750548fb',t:'MTc1NjU1MjA0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
